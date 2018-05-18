@@ -2,6 +2,40 @@ pragma solidity ^0.4.14;
 
 contract PanelVoting {
 
+  struct Voter {
+    uint[] proposalScores;
+  }
+
+  struct Proposal {
+    uint id;
+    uint[] scores;
+    uint average;
+    uint median;
+  }
+
+  //Associate Address with a panelist
+  mapping(address => Voter) panelist;
+
+  //Associate proposal number with score
+  mapping(uint => uint) grades;
+
+  mapping(uint => Proposal) proposals;
+
+  //Create a Proposal struct for every proposal id
+  function LoadProposals(uint[] proposalList) public {
+    for (uint i=0; i < propsalList.sizeof(); i++) {
+      proposals[proposalList[i]] = Proposal(proposalList[i],,,);
+    }
+  }
+  
+  function Vote(uint proposalNumber, uint grade) public{
+    grades[proposalNumber] = grade;
+    panelist[msg.sender] = Voter.proposalScores.push(grades[proposalNumber]);
+
+    proposals[proposalNumber
+
+  
+
   //Associate an address with a grade
   mapping(address => uint) public panelistGrade;
 
